@@ -16,18 +16,18 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <a href="" className="me-4 text-reset">
+                        <Link to="/" className="me-4 text-reset">
                             <FaFacebook />
-                        </a>
-                        <a href="" className="me-4 text-reset">
+                        </Link>
+                        <Link to="/" className="me-4 text-reset">
                             <FaTwitter />
-                        </a>
-                        <a href="" className="me-4 text-reset">
+                        </Link>
+                        <Link to="/" className="me-4 text-reset">
                             <FaLinkedin />
-                        </a>
-                        <a href="" className="me-4 text-reset">
+                        </Link>
+                        <Link to="/" className="me-4 text-reset">
                             <FaGithub />
-                        </a>
+                        </Link>
                     </div>
                 </div>
                 <div className="container text-center text-md-start mt-5">
