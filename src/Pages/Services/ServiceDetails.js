@@ -4,14 +4,14 @@ import { useLoaderData } from "react-router-dom";
 
 const ServiceDetails = () => {
     const serviceDetail = useLoaderData();
-    const { title, picture, price, description, facilities } = serviceDetail;
+    const { title, picture, price, description, facilities } =
+        serviceDetail;
     return (
         <Container className="bg-light border shadow my-5 px-5">
             <Row className="my-5 gap-5">
                 <h2>{title}</h2>
                 <Col lg="5">
                     <img
-                        fluid
                         src={picture}
                         alt="service-cover"
                         height={500}
@@ -22,11 +22,11 @@ const ServiceDetails = () => {
                 </Col>
                 <Col lg="5">
                     <h2 className="mb-5">Facilities</h2>
-                    {facilities.map((facility) => (
-                        <>
+                    {facilities.map((facility, index) => (
+                        <div key={index}>
                             <h4>{facility.name}</h4>
                             <p>{facility.details}</p>
-                        </>
+                        </div>
                     ))}
                 </Col>
             </Row>

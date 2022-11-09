@@ -5,7 +5,7 @@ import img from "../../Assets/not_found.jpg";
 const NotFound = () => {
     return (
         <Container>
-            <img fluid src={img} alt="not-found" className="w-100" />
+            <img src={img} alt="not-found" className="w-100" />
         </Container>
     );
 };

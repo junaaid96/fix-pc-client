@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { Form, Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import img from "../../Assets/login.jpg";
+import img from "../../Assets/login.png";
 
 const Login = () => {
     return (
@@ -11,7 +11,7 @@ const Login = () => {
                 <Col lg="5">
                     <Form>
                         <div className="form-outline mb-4">
-                            <label className="form-label" for="formEmail">
+                            <label className="form-label" htmlFor="formEmail">
                                 Email address
                             </label>
                             <input
@@ -22,7 +22,7 @@ const Login = () => {
                             />
                         </div>
                         <div className="form-outline mb-4">
-                            <label className="form-label" for="formPassword">
+                            <label className="form-label" htmlFor="formPassword">
                                 Password
                             </label>
                             <input
@@ -37,7 +37,7 @@ const Login = () => {
                         </div>
 
                         <button type="submit" className="btn btn-dark mb-4">
-                            Sign in
+                            Sign In
                         </button>
 
                         <div className="text-center">
@@ -61,7 +61,7 @@ const Login = () => {
                     </Form>
                 </Col>
                 <Col lg="5">
-                    <img fluid src={img} alt="login" className="w-100"/>
+                    <img src={img} alt="login" className="w-100"/>
                 </Col>
             </Row>
         </Container>
