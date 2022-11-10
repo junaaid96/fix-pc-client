@@ -5,8 +5,11 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import NotFound from "../Pages/NotFound/NotFound";
 import Registration from "../Pages/Registration/Registration";
+import Reviews from "../Pages/Reviews/Reviews";
+import AddService from "../Pages/Services/AddService";
 import ServiceDetails from "../Pages/Services/ServiceDetails";
 import Services from "../Pages/Services/Services";
+import PrivateRoute from "./PrivateRoutes/PrivateRoutes";
 
 const routes = createBrowserRouter([
     {
@@ -25,11 +28,29 @@ const routes = createBrowserRouter([
                 path: "/services/:id",
                 element: <ServiceDetails></ServiceDetails>,
                 loader: ({ params }) =>
-                    fetch(`https://fix-pc-server.vercel.app/services/${params.id}`),
+                    fetch(
+                        `https://fix-pc-server.vercel.app/services/${params.id}`
+                    ),
             },
             {
                 path: "/blog",
                 element: <Blog></Blog>,
+            },
+            {
+                path: "/reviews",
+                element: (
+                    <PrivateRoute>
+                        <Reviews></Reviews>
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/add-service",
+                element: (
+                    <PrivateRoute>
+                        <AddService></AddService>
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/login",

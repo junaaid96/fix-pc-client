@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "react-router-dom";
 import { TbHeartRateMonitor } from "react-icons/tb";
+import { AuthContext } from "../../../Contexts/AuthProvider";
 
 const Header = () => {
+    const { user, signingOut } = useContext(AuthContext);
+
+    const handleSigningOut = () => {
+        signingOut()
+            .then(() => {})
+            .catch((error) => console.error(error));
+    };
+
     return (
         <Navbar bg="light" expand="lg">
             <Container>
@@ -42,14 +50,42 @@ const Header = () => {
                             Blog
                         </Link>
                     </Nav>
-                    <Form className="d-flex gap-2">
-                        <Link to="/login">
-                            <Button variant="dark">Login</Button>
-                        </Link>
-                        <Link to="/registration">
-                            <Button variant="outline-dark">Sign Up</Button>
-                        </Link>
-                    </Form>
+                    <Nav className="gap-3 d-flex align-content-center justify-content-center">
+                        {user?.email ? (
+                            <>
+                                <Link
+                                    className="text-decoration-none text-dark fw-bold"
+                                    to="/reviews"
+                                >
+                                    My Reviews
+                                </Link>
+                                <Link
+                                    className="text-decoration-none text-dark fw-bold"
+                                    to="/add-service"
+                                >
+                                    Add Service
+                                </Link>
+                                <Button
+                                    className="btn-sm"
+                                    variant="dark"
+                                    onClick={handleSigningOut}
+                                >
+                                    Sign Out
+                                </Button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/login">
+                                    <Button variant="dark">Login</Button>
+                                </Link>
+                                <Link to="/registration">
+                                    <Button variant="outline-dark">
+                                        Sign Up
+                                    </Button>
+                                </Link>
+                            </>
+                        )}
+                    </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
