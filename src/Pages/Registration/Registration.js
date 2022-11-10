@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Button, Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import toast, { Toaster } from "react-hot-toast";
-import { Form, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import img from "../../Assets/signup.png";
 import { AuthContext } from "../../Contexts/AuthProvider";
 

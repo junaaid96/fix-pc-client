@@ -1,11 +1,22 @@
-import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Col, Container, Form, Row } from "react-bootstrap";
+import { Link, useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const ServiceDetails = () => {
+    const { user } = useContext(AuthContext);
+
     const serviceDetail = useLoaderData();
-    const { title, picture, price, description, facilities } =
-        serviceDetail;
+    const { title, picture, price, description, facilities } = serviceDetail;
+
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        fetch("https://fix-pc-server.vercel.app/reviews")
+            .then((res) => res.json())
+            .then((data) => setReviews(data));
+    }, []);
+
     return (
         <Container className="bg-light border shadow my-5 px-5">
             <Row className="my-5 gap-5">
@@ -31,7 +42,40 @@ const ServiceDetails = () => {
                 </Col>
             </Row>
             <Row className="my-5">
-                <h1>Reviews</h1>
+                <h2 className="mb-5">Reviews: {reviews.length}</h2>
+                {user?.email ? (
+                    <Form>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="emailForm.ControlInput"
+                        >
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control
+                                type="email"
+                                placeholder={`${user.email}`}
+                                readOnly
+                            />
+                        </Form.Group>
+                        <Form.Group
+                            className="mb-3"
+                            controlId="reviewForm.ControlTextarea"
+                        >
+                            <Form.Label>Review</Form.Label>
+                            <Form.Control as="textarea" rows={3} />
+                        </Form.Group>
+                    </Form>
+                ) : (
+                    <p className="text-dark">
+                        Please{" "}
+                        <Link
+                            className="text-decoration-none fw-bold"
+                            to="/login"
+                        >
+                            login
+                        </Link>{" "}
+                        to add review!
+                    </p>
+                )}
             </Row>
         </Container>
     );
