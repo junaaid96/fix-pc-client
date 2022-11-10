@@ -15,7 +15,37 @@ const ServiceDetails = () => {
         fetch("https://fix-pc-server.vercel.app/reviews")
             .then((res) => res.json())
             .then((data) => setReviews(data));
-    }, []);
+    }, [reviews]);
+
+    const handleReview = (event) => {
+        event.preventDefault();
+        console.log(event.target);
+        const form = event.target;
+        const userName = form.name.value;
+        // const picture = form.picture.value;
+        const review = form.review.value;
+        console.log(review);
+
+        const rev = {
+            name: userName,
+            text: review,
+        };
+
+        fetch("https://fix-pc-server.vercel.app/reviews", {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+            },
+            body: JSON.stringify(rev),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setReviews([...reviews, data]);
+                form.reset();
+            })
+            .catch((error) => console.error(error));
+    };
 
     return (
         <Container className="bg-light border shadow my-5 px-5">
@@ -42,10 +72,10 @@ const ServiceDetails = () => {
                 </Col>
             </Row>
             <Row className="my-5">
-                <h2 className="mb-5">Reviews: {reviews.length}</h2>
+                <h2 className="mb-5">Reviews</h2>
                 {user?.email ? (
                     <>
-                        <Form>
+                        <Form onSubmit={handleReview}>
                             <Form.Group
                                 className="mb-3"
                                 controlId="nameForm.ControlInput"
@@ -54,7 +84,7 @@ const ServiceDetails = () => {
                                 <Form.Control
                                     type="text"
                                     name="name"
-                                    placeholder={`${user.displayName}`}
+                                    defaultValue={user.displayName}
                                     readOnly
                                 />
                             </Form.Group>
@@ -66,7 +96,7 @@ const ServiceDetails = () => {
                                 <Form.Control
                                     type="email"
                                     name="email"
-                                    placeholder={`${user.email}`}
+                                    defaultValue={user.email}
                                     readOnly
                                 />
                             </Form.Group>
@@ -75,18 +105,27 @@ const ServiceDetails = () => {
                                 controlId="reviewForm.ControlTextarea"
                             >
                                 <Form.Label>Review</Form.Label>
-                                <Form.Control as="textarea" rows={3} />
+                                <Form.Control
+                                    as="textarea"
+                                    rows={3}
+                                    name="review"
+                                    required
+                                />
                             </Form.Group>
-                            <Button variant="dark">Post</Button>
+                            <Button type="submit" variant="dark">
+                                Post
+                            </Button>
                         </Form>
-                        <h2 className="my-5">Earlier Reviews</h2>
-                        {reviews.map((review) => (
-                            <>
+                        <h2 className="my-5">
+                            Earlier Reviews {reviews.length}
+                        </h2>
+                        {reviews.map((review, index) => (
+                            <div key={index}>
                                 <h5>{review.name}</h5>
                                 <p className="bg-white p-3 rounded-3">
                                     {review.text}
                                 </p>
-                            </>
+                            </div>
                         ))}
                     </>
                 ) : (

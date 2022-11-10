@@ -19,8 +19,7 @@ const routes = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () =>
-                    fetch("https://fix-pc-server.vercel.app/home"),
+                loader: () => fetch("https://fix-pc-server.vercel.app/home"),
             },
             {
                 path: "/services",
@@ -45,6 +44,8 @@ const routes = createBrowserRouter([
                         <Reviews></Reviews>
                     </PrivateRoute>
                 ),
+                loader: () =>
+                    fetch("https://fix-pc-server.vercel.app/reviews/"),
             },
             {
                 path: "/add-service",
