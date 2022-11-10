@@ -1,3 +1,23 @@
+# Live Site
+
+https://fixpc-fe9de.web.app/
+
+# Features
+
+-   Continuously Updates according to the latest tech.
+-   Free Consultancy in every services.
+-   Dedicated Supports on time.
+-   Adopted machine learning based algorithm to solve issues quickly.
+-   Sold required parts separately.
+
+# Functionalities
+
+-   Minimalistic UI/UX.
+-   Made responsive for Mobile, Tablet and Desktop.
+-   Services can be added.
+-   Review facility.
+-   Safe authentication system.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,4 +88,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
 # b6a11-service-review-client-side-junaaid96
