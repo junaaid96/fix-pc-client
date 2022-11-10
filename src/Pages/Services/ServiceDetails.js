@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 
@@ -22,13 +22,13 @@ const ServiceDetails = () => {
         console.log(event.target);
         const form = event.target;
         const userName = form.name.value;
-        // const picture = form.picture.value;
         const review = form.review.value;
         console.log(review);
 
         const rev = {
             name: userName,
             text: review,
+            picture: user.photoURL,
         };
 
         fetch("https://fix-pc-server.vercel.app/reviews", {
@@ -63,12 +63,18 @@ const ServiceDetails = () => {
                 </Col>
                 <Col lg="5">
                     <h2 className="mb-5">Facilities</h2>
-                    {facilities.map((facility, index) => (
-                        <div key={index}>
-                            <h4>{facility.name}</h4>
-                            <p>{facility.details}</p>
-                        </div>
-                    ))}
+                    {facilities ? (
+                        facilities?.map((facility, index) => (
+                            <div key={index}>
+                                <h4>{facility.name}</h4>
+                                <p>{facility.details}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <h4 className="text-danger">
+                            No Facilities were added!
+                        </h4>
+                    )}
                 </Col>
             </Row>
             <Row className="my-5">
@@ -121,10 +127,20 @@ const ServiceDetails = () => {
                         </h2>
                         {reviews.map((review, index) => (
                             <div key={index}>
-                                <h5>{review.name}</h5>
-                                <p className="bg-white p-3 rounded-3">
-                                    {review.text}
-                                </p>
+                                <div className="d-flex flex-wrap align-items-center gap-2">
+                                    <Image
+                                        roundedCircle
+                                        src={review.picture}
+                                        alt="avatar"
+                                        height={50}
+                                    />
+                                    <h5>{review.name}</h5>
+                                </div>
+                                <div>
+                                    <p className="bg-white p-3 rounded-3">
+                                        {review.text}
+                                    </p>
+                                </div>
                             </div>
                         ))}
                     </>
