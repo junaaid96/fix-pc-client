@@ -72,6 +72,7 @@ const Login = () => {
                                 name="email"
                                 className="form-control"
                                 placeholder="Email"
+                                required
                             />
                         </div>
                         <div className="form-outline mb-4">
@@ -87,6 +88,7 @@ const Login = () => {
                                 name="password"
                                 className="form-control"
                                 placeholder="Password"
+                                required
                             />
                             <div className="my-2">
                                 <a href="#!">Forgot password?</a>

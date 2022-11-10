@@ -57,6 +57,7 @@ const AddService = () => {
                         type="text"
                         name="title"
                         placeholder="title"
+                        required
                     />
                 </Form.Group>
                 <Form.Group
@@ -68,6 +69,7 @@ const AddService = () => {
                         type="text"
                         name="picture"
                         placeholder="picture URL"
+                        required
                     />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="priceForm.ControlInput">
@@ -76,6 +78,7 @@ const AddService = () => {
                         type="text"
                         name="price"
                         placeholder="price"
+                        required
                     />
                 </Form.Group>
                 <Form.Group
@@ -87,6 +90,7 @@ const AddService = () => {
                         type="text"
                         name="description"
                         placeholder="description"
+                        required
                     />
                 </Form.Group>
                 <Button type="submit" className="my-3" variant="dark">

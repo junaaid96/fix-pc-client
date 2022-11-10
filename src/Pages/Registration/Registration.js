@@ -63,6 +63,7 @@ const Registration = () => {
                                 name="name"
                                 className="form-control"
                                 placeholder="Name"
+                                required
                             />
                         </div>
                         <div className="form-outline mb-4">
@@ -75,6 +76,7 @@ const Registration = () => {
                                 name="photoURL"
                                 className="form-control"
                                 placeholder="PhotoURL"
+                                required
                             />
                         </div>
                         <div className="form-outline mb-4">
@@ -87,6 +89,7 @@ const Registration = () => {
                                 name="email"
                                 className="form-control"
                                 placeholder="Email"
+                                required
                             />
                         </div>
                         <div className="form-outline mb-4">
@@ -102,6 +105,7 @@ const Registration = () => {
                                 name="password"
                                 className="form-control"
                                 placeholder="Password"
+                                required
                             />
                         </div>
                         <p className="text-danger">
