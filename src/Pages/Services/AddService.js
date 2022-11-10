@@ -4,7 +4,10 @@ import toast, { Toaster } from "react-hot-toast";
 
 const AddService = () => {
     const [services, setServices] = useState([]);
-    const notify = () => toast.success("Service Added Successfully");
+    const notify = () =>
+        toast.success(
+            "Service Added Successfully. Check it out in the All Services."
+        );
 
     useEffect(() => {
         fetch("https://fix-pc-server.vercel.app/services")

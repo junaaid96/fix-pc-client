@@ -39,6 +39,12 @@ const Header = () => {
                         </Link>
                         <Link
                             className="text-decoration-none text-dark fw-bold"
+                            to="/services"
+                        >
+                            <Button variant="outline-dark">All Services</Button>
+                        </Link>
+                        <Link
+                            className="text-decoration-none text-dark fw-bold"
                             to="/blog"
                         >
                             <Button variant="outline-dark">Blog</Button>
@@ -51,13 +57,17 @@ const Header = () => {
                                     className="text-decoration-none text-dark fw-bold"
                                     to="/reviews"
                                 >
-                                    <Button variant="outline-dark">My Reviews</Button>
+                                    <Button variant="outline-dark">
+                                        My Reviews
+                                    </Button>
                                 </Link>
                                 <Link
                                     className="text-decoration-none text-dark fw-bold"
                                     to="/add-service"
                                 >
-                                    <Button variant="outline-dark">Add Service</Button>
+                                    <Button variant="outline-dark">
+                                        Add Service
+                                    </Button>
                                 </Link>
                                 <Button
                                     variant="dark"
@@ -72,9 +82,7 @@ const Header = () => {
                                     <Button variant="dark">Login</Button>
                                 </Link>
                                 <Link to="/registration">
-                                    <Button variant="dark">
-                                        Sign Up
-                                    </Button>
+                                    <Button variant="dark">Sign Up</Button>
                                 </Link>
                             </>
                         )}

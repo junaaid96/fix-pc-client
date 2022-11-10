@@ -122,6 +122,19 @@ const ServiceDetails = () => {
                                 Post
                             </Button>
                         </Form>
+                    </>
+                ) : (
+                    <>
+                        <p className="text-dark">
+                            Please{" "}
+                            <Link
+                                className="text-decoration-none fw-bold"
+                                to="/login"
+                            >
+                                login
+                            </Link>{" "}
+                            to add review!
+                        </p>
                         <h2 className="my-5">
                             Earlier Reviews {reviews.length}
                         </h2>
@@ -144,17 +157,6 @@ const ServiceDetails = () => {
                             </div>
                         ))}
                     </>
-                ) : (
-                    <p className="text-dark">
-                        Please{" "}
-                        <Link
-                            className="text-decoration-none fw-bold"
-                            to="/login"
-                        >
-                            login
-                        </Link>{" "}
-                        to add review!
-                    </p>
                 )}
             </Row>
         </Container>
