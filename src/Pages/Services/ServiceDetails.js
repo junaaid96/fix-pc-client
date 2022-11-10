@@ -122,6 +122,27 @@ const ServiceDetails = () => {
                                 Post
                             </Button>
                         </Form>
+                        <h2 className="my-5">
+                            Earlier Reviews {reviews.length}
+                        </h2>
+                        {reviews.map((review, index) => (
+                            <div key={index}>
+                                <div className="d-flex flex-wrap align-items-center gap-2">
+                                    <Image
+                                        roundedCircle
+                                        src={review.picture}
+                                        alt="avatar"
+                                        height={50}
+                                    />
+                                    <h5>{review.name}</h5>
+                                </div>
+                                <div>
+                                    <p className="bg-white p-3 rounded-3">
+                                        {review.text}
+                                    </p>
+                                </div>
+                            </div>
+                        ))}
                     </>
                 ) : (
                     <>
