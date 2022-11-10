@@ -35,19 +35,13 @@ const Header = () => {
                             className="text-decoration-none text-dark fw-bold"
                             to="/"
                         >
-                            Home
-                        </Link>
-                        <Link
-                            className="text-decoration-none text-dark fw-bold"
-                            to="/services"
-                        >
-                            Services
+                            <Button variant="outline-dark">Home</Button>
                         </Link>
                         <Link
                             className="text-decoration-none text-dark fw-bold"
                             to="/blog"
                         >
-                            Blog
+                            <Button variant="outline-dark">Blog</Button>
                         </Link>
                     </Nav>
                     <Nav className="gap-3 d-flex align-content-center justify-content-center">
@@ -57,16 +51,15 @@ const Header = () => {
                                     className="text-decoration-none text-dark fw-bold"
                                     to="/reviews"
                                 >
-                                    My Reviews
+                                    <Button variant="outline-dark">My Reviews</Button>
                                 </Link>
                                 <Link
                                     className="text-decoration-none text-dark fw-bold"
                                     to="/add-service"
                                 >
-                                    Add Service
+                                    <Button variant="outline-dark">Add Service</Button>
                                 </Link>
                                 <Button
-                                    className="btn-sm"
                                     variant="dark"
                                     onClick={handleSigningOut}
                                 >
@@ -79,7 +72,7 @@ const Header = () => {
                                     <Button variant="dark">Login</Button>
                                 </Link>
                                 <Link to="/registration">
-                                    <Button variant="outline-dark">
+                                    <Button variant="dark">
                                         Sign Up
                                     </Button>
                                 </Link>
