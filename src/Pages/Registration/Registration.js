@@ -10,7 +10,9 @@ const Registration = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext);
     const notify = () =>
         toast.error(
-            error && "This email address already in use. Try another email."
+            error === "Firebase: Error (auth/email-already-in-use)"
+                ? "This email address already in use. Try another email."
+                : error
         );
 
     const handleSignUp = (event) => {
