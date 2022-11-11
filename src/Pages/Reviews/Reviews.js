@@ -1,9 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Container, Image } from "react-bootstrap";
-import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 
 const Reviews = () => {
-    const reviews = useLoaderData();
+    const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([]);
+
+    console.log(reviews);
+
+    useEffect(() => {
+        fetch(`https://fix-pc-server.vercel.app/reviews?email=${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => setReviews(data));
+    }, [user?.email]);
+
     return (
         <Container className="bg-light p-5 my-5 border shadow">
             {reviews.map((review, index) => (

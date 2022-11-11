@@ -44,8 +44,6 @@ const routes = createBrowserRouter([
                         <Reviews></Reviews>
                     </PrivateRoute>
                 ),
-                loader: () =>
-                    fetch("https://fix-pc-server.vercel.app/reviews/"),
             },
             {
                 path: "/add-service",

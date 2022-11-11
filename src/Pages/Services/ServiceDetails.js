@@ -22,13 +22,15 @@ const ServiceDetails = () => {
         console.log(event.target);
         const form = event.target;
         const userName = form.name.value;
+        const userEmail = form.email.value;
         const review = form.review.value;
         console.log(review);
 
         const rev = {
+            picture: user.photoURL,
+            email: userEmail,
             name: userName,
             text: review,
-            picture: user.photoURL,
         };
 
         fetch("https://fix-pc-server.vercel.app/reviews", {
@@ -122,63 +124,38 @@ const ServiceDetails = () => {
                                 Post
                             </Button>
                         </Form>
-                        <h2 className="my-5">
-                            Earlier Reviews {reviews.length}
-                        </h2>
-                        {reviews.map((review, index) => (
-                            <div key={index}>
-                                <div className="d-flex flex-wrap align-items-center gap-2">
-                                    <Image
-                                        roundedCircle
-                                        src={review.picture}
-                                        alt="avatar"
-                                        height={50}
-                                    />
-                                    <h5>{review.name}</h5>
-                                </div>
-                                <div>
-                                    <p className="bg-white p-3 rounded-3">
-                                        {review.text}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
                     </>
                 ) : (
-                    <>
-                        <p className="text-dark">
-                            Please{" "}
-                            <Link
-                                className="text-decoration-none fw-bold"
-                                to="/login"
-                            >
-                                login
-                            </Link>{" "}
-                            to add review!
-                        </p>
-                        <h2 className="my-5">
-                            Earlier Reviews {reviews.length}
-                        </h2>
-                        {reviews.map((review, index) => (
-                            <div key={index}>
-                                <div className="d-flex flex-wrap align-items-center gap-2">
-                                    <Image
-                                        roundedCircle
-                                        src={review.picture}
-                                        alt="avatar"
-                                        height={50}
-                                    />
-                                    <h5>{review.name}</h5>
-                                </div>
-                                <div>
-                                    <p className="bg-white p-3 rounded-3">
-                                        {review.text}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </>
+                    <p className="text-dark">
+                        Please{" "}
+                        <Link
+                            className="text-decoration-none fw-bold"
+                            to="/login"
+                        >
+                            login
+                        </Link>{" "}
+                        to add review!
+                    </p>
                 )}
+                <h2 className="my-5">Earlier Reviews {reviews.length}</h2>
+                {reviews.map((review, index) => (
+                    <div key={index}>
+                        <div className="d-flex flex-wrap align-items-center gap-2">
+                            <Image
+                                roundedCircle
+                                src={review.picture}
+                                alt="avatar"
+                                height={50}
+                            />
+                            <h5>{review.name}</h5>
+                        </div>
+                        <div>
+                            <p className="bg-white p-3 rounded-3">
+                                {review.text}
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </Row>
         </Container>
     );

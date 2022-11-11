@@ -26,11 +26,7 @@ const Header = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll" />
                 <Navbar.Collapse id="navbarScroll">
-                    <Nav
-                        className="mx-auto mx-2 my-3 gap-2"
-                        style={{ maxHeight: "100px" }}
-                        navbarScroll
-                    >
+                    <Nav className="mx-auto mx-2 my-3 gap-2" navbarScroll>
                         <Link
                             className="text-decoration-none text-dark fw-bold"
                             to="/"
@@ -50,7 +46,7 @@ const Header = () => {
                             <Button variant="outline-dark">Blog</Button>
                         </Link>
                     </Nav>
-                    <Nav className="gap-3 d-flex align-content-center justify-content-center">
+                    <Nav className="gap-3">
                         {user?.email ? (
                             <>
                                 <Link
