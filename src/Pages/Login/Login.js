@@ -5,7 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import img from "../../Assets/login.png";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -102,7 +102,6 @@ const Login = () => {
                         <Button type="submit" variant="dark mb-4">
                             Sign In
                         </Button>
-                        <Toaster />
                     </Form>
                     <div className="text-center">
                         <p>

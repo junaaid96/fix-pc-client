@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
 import { FaEdit } from "react-icons/fa";
 import { FiDelete } from "react-icons/fi";
+import toast from "react-hot-toast";
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -53,6 +54,8 @@ const ServiceDetails = () => {
             .catch((error) => console.error(error));
     };
 
+    const notify = () => toast.success("Review Deleted Successfully!");
+
     const handleDelete = (id) => {
         fetch(`https://fix-pc-server.vercel.app/reviews/${id}`, {
             method: "DELETE",
@@ -60,11 +63,12 @@ const ServiceDetails = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.deletedCount > 0) {
-                    const remainingReviews = reviews.filter(
-                        (review) => review._id !== id
-                    );
-                    setReviews(remainingReviews);
+                    notify();
                 }
+                const remainingReviews = reviews.filter(
+                    (review) => review._id !== id
+                );
+                setReviews(remainingReviews);
             });
     };
 

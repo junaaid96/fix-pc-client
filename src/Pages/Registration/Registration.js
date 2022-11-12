@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import img from "../../Assets/signup.png";
 import { AuthContext } from "../../Contexts/AuthProvider";
@@ -114,7 +114,6 @@ const Registration = () => {
                         <Button type="submit" variant="dark mb-4">
                             Sign Up
                         </Button>
-                        <Toaster />
 
                         <div className="text-center">
                             <p>
