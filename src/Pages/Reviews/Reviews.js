@@ -29,7 +29,7 @@ const Reviews = () => {
                         <h5>
                             <strong>{review.name}</strong> reviewed on{" "}
                             <span className="fw-bold text-primary">
-                                {review.title}
+                                {review.service_title}
                             </span>
                         </h5>
                     </div>
