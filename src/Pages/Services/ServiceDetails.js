@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Contexts/AuthProvider";
+import { FaEdit } from "react-icons/fa";
+import { FiDelete } from "react-icons/fi";
 
 const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
@@ -16,7 +18,7 @@ const ServiceDetails = () => {
         fetch(`https://fix-pc-server.vercel.app/reviews/${_id}`)
             .then((res) => res.json())
             .then((data) => setReviews(data));
-            // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reviews]);
 
     const handleReview = (event) => {
@@ -49,6 +51,21 @@ const ServiceDetails = () => {
                 form.reset();
             })
             .catch((error) => console.error(error));
+    };
+
+    const handleDelete = (id) => {
+        fetch(`https://fix-pc-server.vercel.app/reviews/${id}`, {
+            method: "DELETE",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.deletedCount > 0) {
+                    const remainingReviews = reviews.filter(
+                        (review) => review._id !== id
+                    );
+                    setReviews(remainingReviews);
+                }
+            });
     };
 
     return (
@@ -145,20 +162,29 @@ const ServiceDetails = () => {
                         key={index}
                         className="border border-dark rounded-1 mb-2 border-opacity-25"
                     >
-                        <div className="d-flex flex-wrap align-items-center gap-2 p-2">
-                            <Image
-                                roundedCircle
-                                src={review.picture}
-                                alt="avatar"
-                                height={50}
-                            />
-                            <h5>{review.name}</h5>
+                        <div className="d-flex align-items-center justify-content-between gap-2">
+                            <div className="d-flex flex-wrap align-items-center gap-2 p-2">
+                                <Image
+                                    roundedCircle
+                                    src={review.picture}
+                                    alt="avatar"
+                                    height={50}
+                                />
+                                <h5>{review.name}</h5>
+                            </div>
+                            {user?.email === review.email && (
+                                <div>
+                                    <FaEdit className="mx-2" />
+                                    <Button
+                                        onClick={() => handleDelete(review._id)}
+                                        variant="dark"
+                                    >
+                                        <FiDelete className="mx-2" />
+                                    </Button>
+                                </div>
+                            )}
                         </div>
-                        <div>
-                            <p className="bg-white p-3 rounded-3">
-                                {review.text}
-                            </p>
-                        </div>
+                        <p className="bg-white p-3 rounded-3">{review.text}</p>
                     </div>
                 ))}
             </Row>
