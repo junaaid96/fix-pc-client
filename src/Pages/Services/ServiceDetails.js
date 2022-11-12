@@ -7,14 +7,16 @@ const ServiceDetails = () => {
     const { user } = useContext(AuthContext);
 
     const serviceDetail = useLoaderData();
-    const { title, picture, price, description, facilities } = serviceDetail;
+    const { _id, title, picture, price, description, facilities } =
+        serviceDetail;
 
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch("https://fix-pc-server.vercel.app/reviews")
+        fetch(`https://fix-pc-server.vercel.app/reviews/${_id}`)
             .then((res) => res.json())
             .then((data) => setReviews(data));
+            // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [reviews]);
 
     const handleReview = (event) => {
@@ -24,16 +26,17 @@ const ServiceDetails = () => {
         const userName = form.name.value;
         const userEmail = form.email.value;
         const review = form.review.value;
-        console.log(review);
 
         const rev = {
+            service_id: _id,
+            service_title: title,
             picture: user.photoURL,
             email: userEmail,
             name: userName,
             text: review,
         };
 
-        fetch("https://fix-pc-server.vercel.app/reviews", {
+        fetch(`https://fix-pc-server.vercel.app/reviews/`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",
@@ -42,7 +45,6 @@ const ServiceDetails = () => {
         })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data);
                 setReviews([...reviews, data]);
                 form.reset();
             })
@@ -139,8 +141,11 @@ const ServiceDetails = () => {
                 )}
                 <h2 className="my-5">Earlier Reviews {reviews.length}</h2>
                 {reviews.map((review, index) => (
-                    <div key={index}>
-                        <div className="d-flex flex-wrap align-items-center gap-2">
+                    <div
+                        key={index}
+                        className="border border-dark rounded-1 mb-2 border-opacity-25"
+                    >
+                        <div className="d-flex flex-wrap align-items-center gap-2 p-2">
                             <Image
                                 roundedCircle
                                 src={review.picture}
