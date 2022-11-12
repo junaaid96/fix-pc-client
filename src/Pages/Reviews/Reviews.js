@@ -7,10 +7,10 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`https://fix-pc-server.vercel.app/reviews?email=${user?.email}`)
+        fetch(`https://fix-pc-server.vercel.app/reviews?email=${user.email}`)
             .then((res) => res.json())
             .then((data) => setReviews(data));
-    }, [user?.email]);
+    }, [user.email]);
 
     return (
         <Container className="bg-light p-5 my-5 border shadow">
