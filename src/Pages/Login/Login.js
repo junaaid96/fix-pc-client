@@ -5,7 +5,6 @@ import { FcGoogle } from "react-icons/fc";
 import img from "../../Assets/login.png";
 import { GoogleAuthProvider } from "firebase/auth";
 import { AuthContext } from "../../Contexts/AuthProvider";
-import toast from "react-hot-toast";
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -17,12 +16,6 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     const [error, setError] = useState("");
-    const notify = () =>
-        toast.error(
-            error === "Firebase: Error (auth/wrong-password)."
-                ? "Incorrect Password!"
-                : error
-        );
 
     const handleSignIn = (event) => {
         event.preventDefault();
@@ -41,7 +34,6 @@ const Login = () => {
             .catch((error) => {
                 console.error(error);
                 setError(error.message);
-                notify();
             });
     };
 
@@ -61,7 +53,7 @@ const Login = () => {
         <Container className="bg-light p-5 my-5 border shadow">
             <Row className="gap-5">
                 <Col lg="5">
-                    <Form  onSubmit={handleSignIn}>
+                    <Form onSubmit={handleSignIn}>
                         <div className="form-outline mb-4">
                             <label className="form-label" htmlFor="formEmail">
                                 Email address
@@ -96,7 +88,9 @@ const Login = () => {
                         </div>
 
                         <p className="text-danger">
-                            {error && "An error occured. Check toast message!"}
+                            {error === "Firebase: Error (auth/wrong-password)."
+                                ? "Incorrect Password!"
+                                : error}
                         </p>
 
                         <Button type="submit" variant="dark mb-4">

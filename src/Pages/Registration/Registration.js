@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import img from "../../Assets/signup.png";
 import { AuthContext } from "../../Contexts/AuthProvider";
@@ -8,12 +7,6 @@ import { AuthContext } from "../../Contexts/AuthProvider";
 const Registration = () => {
     const [error, setError] = useState("");
     const { createUser, updateUserProfile } = useContext(AuthContext);
-    const notify = () =>
-        toast.error(
-            error === "Firebase: Error (auth/email-already-in-use)"
-                ? "This email address already in use. Try another email."
-                : error
-        );
 
     const handleSignUp = (event) => {
         event.preventDefault();
@@ -34,7 +27,6 @@ const Registration = () => {
             .catch((error) => {
                 console.error(error);
                 setError(error.message);
-                notify();
             });
     };
     const handleUpdateUserProfile = (name, photoURL) => {
@@ -109,7 +101,10 @@ const Registration = () => {
                             />
                         </div>
                         <p className="text-danger">
-                            {error && "An error occured. Check toast message!"}
+                            {error ===
+                            "Firebase: Error (auth/email-already-in-use)."
+                                ? "This email address already in use. Try another email."
+                                : error}
                         </p>
                         <Button type="submit" variant="dark mb-4">
                             Sign Up
