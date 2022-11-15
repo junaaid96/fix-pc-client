@@ -19,8 +19,7 @@ const ServiceDetails = () => {
         fetch(`https://fix-pc-server.vercel.app/reviews/${_id}`)
             .then((res) => res.json())
             .then((data) => setReviews(data));
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [reviews]);
+    }, [reviews, _id]);
 
     const handleReview = (event) => {
         event.preventDefault();
