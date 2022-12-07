@@ -13,10 +13,8 @@ https://fixpc-fe9de.web.app/
 # Functionalities
 
 -   Minimalistic UI/UX.
--   Made responsive for Mobile, Tablet and Desktop.
 -   Services can be added.
 -   Review facility.
--   Safe authentication system.
 
 # Technology Used
 * JavaScript
