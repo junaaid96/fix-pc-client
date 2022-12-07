@@ -18,6 +18,14 @@ https://fixpc-fe9de.web.app/
 -   Review facility.
 -   Safe authentication system.
 
+# Technology Used
+* JavaScript
+* React/React-Router
+* React-Bootstrap
+* Firebase
+* NodeJS/ExpressJS
+* Vercel
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
